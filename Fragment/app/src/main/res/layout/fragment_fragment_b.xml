@@ -1,0 +1,29 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.anuarbek.fragment.FragmentB"
+    android:background="#f26565">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="60dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="refresh"
+        android:id="@+id/refresh"
+        android:background="#fff"
+        android:textColor="#000"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_gravity="right|top"
+        android:layout_marginRight="10dp" />
+</FrameLayout>
