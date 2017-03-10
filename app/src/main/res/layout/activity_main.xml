@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.anuarbek.readfilefromserver.MainActivity">
+    tools:context="com.example.anuarbek.readfilefromserver.MainActivity"
+    android:background="#6bfffd">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,16 +16,24 @@
         android:id="@+id/download"
         android:layout_below="@+id/url"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/show"
+        android:layout_alignEnd="@+id/show"
+        android:background="#25f216"
+        android:textColor="#ffffff" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show"
+        android:text="show only text"
         android:id="@+id/show"
         android:layout_below="@+id/download"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#fff"
+        android:background="#6bfffd" />
 
     <EditText
         android:layout_width="300dp"
@@ -33,7 +42,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Put your link here"/>
+        android:hint="Put your link here"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <ScrollView android:id="@+id/textAreaScroller"
         android:layout_width="fill_parent"
         android:layout_height="700px"

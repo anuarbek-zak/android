@@ -56,11 +56,6 @@ public class MainActivity extends AppCompatActivity {
         if(!ourFolder.exists()){
             ourFolder.mkdirs();
         }
-        Log.d("ourfolder", ourFolder.listFiles().length+"");
-        for(File file:ourFolder.listFiles()){
-            Log.d("My", file.getName()+" "+file.getAbsolutePath()+" "+file.isDirectory());
-        }
-
         Button download = (Button) findViewById(R.id.download);
         Button show = (Button) findViewById(R.id.show);
         tv = (TextView) findViewById(R.id.textView);
@@ -71,29 +66,21 @@ public class MainActivity extends AppCompatActivity {
                 if(url.getText().equals("")) return;
                 String mUrl=url.getText().toString();
                 String[] urlParser = mUrl.toString().split("\\.");
-                ext = urlParser[urlParser.length-1];
+                ext = "."+urlParser[urlParser.length-1];
                 InputStreamVolleyRequest request = new InputStreamVolleyRequest(Request.Method.GET, mUrl,
                         new Response.Listener<byte[]>() {
                             @Override
                             public void onResponse(byte[] response) {
-                                // TODO handle the response
                                 try {
-                                    Log.d("response",String.valueOf(response));
                                     if (response!=null) {
                                         FileOutputStream outputStream;
                                         String uniqueName =(new Date().getTime())+ext;
-                                        Log.d("filename",String.valueOf(uniqueName));
                                         outputStream = openFileOutput(uniqueName, Context.MODE_PRIVATE);
-                                        Log.d("ourfolder2", ourFolder.listFiles().length+"");
                                         outputStream.write(response);
                                         outputStream.close();
-                                        Toast.makeText(MainActivity.this, "Download complete.", Toast.LENGTH_LONG).show();
-                                        for(File file:ourFolder.listFiles()){
-                                            Log.d("My", file.getName()+" "+file.getAbsolutePath()+" "+file.isDirectory());
-                                        }
+                                        Toast.makeText(MainActivity.this, "Finished.", Toast.LENGTH_LONG).show();
                                     }
                                 } catch (Exception e) {
-                                    // TODO Auto-generated catch block
                                     Log.d("KEY_ERROR", "UNABLE TO DOWNLOAD FILE");
                                     e.printStackTrace();
                                 }
@@ -101,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
                         } ,new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO handle the error
                         error.printStackTrace();
                     }
                 },
@@ -119,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 File[] arr =  ourFolder.listFiles();
                 File f = arr[arr.length-1];
                 try {
-                    Log.d("filename",f.getName().toString());
                     FileInputStream fis = MainActivity.this.openFileInput(f.getName().toString());
                     InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
                     BufferedReader bufferedReader = new BufferedReader(isr);
