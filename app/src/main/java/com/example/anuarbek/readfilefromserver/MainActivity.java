@@ -40,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
     File ourFolder;
     EditText url;
     TextView tv;
+    String ext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         url = (EditText) findViewById(R.id.url);
-
         if(Build.VERSION.SDK_INT>=19){
             ourFolder = getFilesDir();
         }else{
@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(url.getText().equals("")) return;
                 String mUrl=url.getText().toString();
+                String[] urlParser = mUrl.toString().split("\\.");
+                ext = urlParser[urlParser.length-1];
                 InputStreamVolleyRequest request = new InputStreamVolleyRequest(Request.Method.GET, mUrl,
                         new Response.Listener<byte[]>() {
                             @Override
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("response",String.valueOf(response));
                                     if (response!=null) {
                                         FileOutputStream outputStream;
-                                        String uniqueName =(new Date().getTime())+".docx";
+                                        String uniqueName =(new Date().getTime())+ext;
                                         Log.d("filename",String.valueOf(uniqueName));
                                         outputStream = openFileOutput(uniqueName, Context.MODE_PRIVATE);
                                         Log.d("ourfolder2", ourFolder.listFiles().length+"");
