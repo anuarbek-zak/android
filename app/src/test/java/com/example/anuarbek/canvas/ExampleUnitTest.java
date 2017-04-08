@@ -1,4 +1,4 @@
-package com.example.anuarbek.readfilefromserver;
+package com.example.anuarbek.canvas;
 
 import org.junit.Test;
 
