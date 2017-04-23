@@ -1,4 +1,4 @@
-package com.example.anuarbek.canvas;
+package com.example.anuarbek.quiz2;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
